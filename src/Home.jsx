@@ -11,7 +11,7 @@ function Home() {
   // const navigate = useNavigate();
 
   const handleDelete = async (id) => {
-    console.log(id);
+    // console.log(id);
     try {
       await axios.delete(`https://contact.herokuapp.com/contact/${id}`);
       setDeleted(!deleted);
