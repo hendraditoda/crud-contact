@@ -14,10 +14,11 @@ function Home() {
     // console.log(id);
     try {
       await axios.delete(`https://contact.herokuapp.com/contact/` + id);
-      // setDeleted(!deleted);
+      setDeleted(!deleted);
       setFetchData(true);
     } catch (error) {
       console.error('Error deleting contact:', error);
+    }
   };
 
   useEffect(() => {
