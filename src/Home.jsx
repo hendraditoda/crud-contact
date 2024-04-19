@@ -7,18 +7,17 @@ import { Link, useNavigate } from 'react-router-dom';
 function Home() {
   const [data, setData] = useState([]);
   const [deleted, setDeleted] = useState(false);
-  const [fetchStatusGame, setFetchStatusGame] = useState(false);
+  const [fetchData, setFetchData] = useState(false);
   // const navigate = useNavigate();
 
   const handleDelete = async (id) => {
     // console.log(id);
     try {
-      await axios.delete(`https://contact.herokuapp.com/contact/${id}`);
-      setDeleted(!deleted);
-      setFetchStatusGame(true);
+      await axios.delete(`https://contact.herokuapp.com/contact/` + id);
+      // setDeleted(!deleted);
+      setFetchData(true);
     } catch (error) {
       console.error('Error deleting contact:', error);
-    }
   };
 
   useEffect(() => {
@@ -28,13 +27,13 @@ function Home() {
         const fetchData = fetch.data;
 
         setData(fetchData);
-        setFetchStatusGame(true);
+        setFetchData(true);
       } catch (error) {
         console.log(error);
       }
     };
     getData();
-  }, [fetchStatusGame]);
+  }, [fetchData]);
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center bg-light vh-100">
